@@ -176,5 +176,5 @@ npm run dev
 
 WeChatMsg is licensed under [MIT](./LICENSE).
 
-Copyright © 2022-2025 by SiYuan.
+Copyright © 2022-2024 by SiYuan.
 Copyright © 2025 by xuncha.
