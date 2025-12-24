@@ -1,3 +1,5 @@
+# 此项目fork自 [WeChatMsg](https://github.com/LC044/WeChatMsg)，使用gemini新增了2025年度报告，目前暂无gui界面。
+
 ## 现已支持微信4.0，[点击查看详细设计文档](https://blog.lc044.love/post/13)
 
 <h1 align="center">我的数据我做主</h1>
@@ -8,25 +10,6 @@
     <a href="https://memotrace.cn/" target="_blank">
         <img alt="GitHub forks" src="https://img.shields.io/github/forks/LC044/WeChatMsg?color=eb6ea5">
     </a>
-    <a href="https://memotrace.cn/" target="_blank">
-        <img src="https://img.shields.io/badge/WeChat-留痕-blue.svg">
-    </a>
-    <a target="_blank" href="https://memotrace.cn/">
-        <img alt="Hits" src="https://hits.b3log.org/LC044/memotrace.svg">
-    </a>
-    <a href="https://memotrace.cn/" target="_blank">
-        <img src="https://img.shields.io/github/license/LC044/WeChatMsg" />
-    </a>
-    <a href="https://github.com/LC044/WeChatMsg/releases" target="_blank">
-        <img alt="GitHub release (with filter)" src="https://img.shields.io/github/v/release/LC044/WeChatMsg">
-    </a>
-    <a href="https://memotrace.cn/" target="_blank">
-        <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/LC044/WeChatMsg/total?color=3eb370">
-    </a>
-</div>
-
-<div align="center">
-    <a href="https://memotrace.cn/"><img src="https://memotrace.cn/img/logo%20-%20%E5%89%AF%E6%9C%AC.png" height="240"/></a>
 </div>
 
 <blockquote>
@@ -63,10 +46,7 @@
 
 
 ## 🍉功能
-- [![](https://img.shields.io/badge/MemoTrace-官网-blue)](https://memotrace.cn/) 
-[![](https://img.shields.io/badge/GitHub-black.svg)](https://github.com/LC044/WeChatMsg)
-[![](https://img.shields.io/badge/Gitee-red.svg)](https://gitee.com/lc044/WeChatMsg)
-[![](https://img.shields.io/badge/Download-yellow.svg)](https://memotrace.cn/)
+
 - 🔒️🔑🔓️Windows本地微信数据库（支持微信4.0）
 - 还原微信聊天界面
     - 🗨文本✅
@@ -85,21 +65,14 @@
   - CSV文档✅ 
   - TXT文档✅ 
   - Word文档✅
-- 分析聊天数据，做成[可视化年报](https://memotrace.cn/demo.html)
+- 分析聊天数据，做成[可视化年报]
 
-## 2024年度报告
+## 2025年度报告
 
 ### 预览
 
 [个人年度报告在线预览](https://memotrace.cn/2024/single/)
 
-[双人年度报告在线预览](https://memotrace.cn/2024Report/)
-
-手机可以扫码观看
-
-<img src="/doc/images/qrcode0.png" height="300px"/>
-
-![](/doc/images/demo1.gif)
 
 ### 源码地址
 
@@ -107,18 +80,8 @@
 
 # ⌛使用
 
-下载地址：[https://memotrace.cn/](https://memotrace.cn/)
-
-下载打包好的exe可执行文件，双击即可运行
-
-**⚠️注意：若出现闪退情况请右击选择用管理员身份运行exe程序，该程序不存在任何病毒，若杀毒软件提示有风险选择略过即可，key为none可重启电脑**
 
 ## 源码运行
-
-[使用示例](./example/README.md)
-[详见开发者手册](./doc/开发者手册.md)
-
-[AI聊天](./MemoAI/readme.md)
 
 ## PC端使用过程中部分问题解决（可参考）
 
@@ -134,15 +97,13 @@
   * 换电脑
 如果您在运行可执行程序的时候出现闪退的现象，请右击软件使用管理员权限运行。
 
-[查看详细教程](https://memotrace.cn/doc/)
-
 # 🏆致谢
 
 <details>
 
 * PC微信工具:[https://github.com/xaoyaoo/PyWxDump](https://github.com/xaoyaoo/PyWxDump)
 * PyQt组件库:[https://github.com/PyQt5/CustomWidgets](https://github.com/PyQt5/CustomWidgets)
-* 得力小助手:[ChatGPT](https://chat.openai.com/)
+* 得力小助手:[ChatGPT](https://chat.openai.com/) [Gemini](https://gemini.google.com/)
 
 </details>
 
@@ -154,8 +115,6 @@
 > 本项目所有功能均建立在”前言“的基础之上，基于该项目的所有开发者均不能接受任何有悖于”前言“的功能需求，违者后果自负。<br>
 > 如果该项目侵犯了您或您产品的任何权益，请联系我删除<br>
 > 软件贩子勿扰，违规违法勿扰，二次开发请务必遵守开源协议
-
-[![Star History Chart](https://api.star-history.com/svg?repos=LC044/WeChatMsg&type=Date)](https://star-history.com/?utm_source=bestxtools.com#LC044/WeChatMsg&Date)
 
 # 🤝贡献者
 
@@ -186,28 +145,6 @@
 
 如果您是一名开发者，有新的想法或建议，欢迎[fork](https://github.com/LC044/WeChatMsg/forks)
 该项目并发起[PR](https://github.com/LC044/WeChatMsg/pulls)，我将把您的名字写入贡献者名单中
-
-# 联系方式
-
-如果您遇到了问题，可以添加QQ群寻求帮助，由于精力有限，不能回答所有问题，所以还请您仔细阅读文档之后再考虑是否入群
-
-## 加群方式
-
-1. 关注官方公众号，回复：联系方式
-2. QQ扫码入群
-
-后续更新将会在公众号同步发布
-<div>
-  <img src="https://blog.lc044.love/static/img/b8df8c594a4cabaa0a62025767a3cfd9.weixin.webp">
-</div>
-
-## AI交流
-
-欢迎对“前言”中AI感兴趣的加入QQ群（不负责任何答疑），让我们一起探讨新技术，钻研新方案，将科技的力量融入生活，打造出一个真正具有情感的个人AI
-
-<div>
-  <img src="doc/images/ai_qq.jpg" height="200">
-</div>
 
 # License
 
