@@ -5,11 +5,11 @@
 
 <h1 align="center">我的数据我做主</h1>
 <div align="center">
-    <a href="https://github.com/LC044/WeChatMsg/stargazers">
-        <img src="https://img.shields.io/github/stars/LC044/WeChatMsg.svg" />
+    <a href="https://github.com/1658671838/WeChatMsg_fix/stargazers">
+        <img src="https://img.shields.io/github/stars/1658671838/WeChatMsg_fix.svg" />
     </a>
-    <a href="https://memotrace.cn/" target="_blank">
-        <img alt="GitHub forks" src="https://img.shields.io/github/forks/LC044/WeChatMsg?color=eb6ea5">
+    <a href="https://github.com/1658671838/WeChatMsg_fix/network/members" target="_blank">
+        <img alt="GitHub forks" src="https://img.shields.io/github/forks/1658671838/WeChatMsg_fix?color=eb6ea5">
     </a>
 </div>
 
@@ -145,18 +145,9 @@ npm run dev
 
 # 🤝贡献者
 
-<a href="https://github.com/lc044/wechatmsg/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=lc044/wechatmsg" />
+<a href="https://github.com/1658671838/WeChatMsg_fix/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=1658671838/WeChatMsg_fix" />
 </a>
-
-## 赞助者名单
-
-感谢以下赞助者的慷慨支持：
-
-- [STDquantum](https://github.com/STDquantum)
-- [xuanli](https://github.com/xuanli)
-- [无名路人](https://github.com/wumingluren)
-- [时鹏亮](https://shipengliang.com)
 
 # 🎄温馨提示
 
