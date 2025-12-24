@@ -145,6 +145,9 @@ npm run dev
 
 # 🤝贡献者
 
+<a href="https://github.com/lc044/wechatmsg/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=lc044/wechatmsg" />
+</a>
 <a href="https://github.com/1658671838/WeChatMsg_fix/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=1658671838/WeChatMsg_fix" />
 </a>
