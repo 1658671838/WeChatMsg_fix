@@ -1,5 +1,10 @@
 # 此项目fork自 [WeChatMsg](https://github.com/LC044/WeChatMsg)，使用gemini新增了2025年度报告，目前暂无gui界面。
 
+> [!WARNING]
+> **版本注意事项**：
+> * 微信版本过低可能导致无法登录。
+> * 微信版本过高可能导致无法获取密钥。
+> * 目前支持的最高版本为 **4.0.3.22**，建议下载此版本进行操作。
 
 ## 现已支持微信4.0，[点击查看详细设计文档](https://blog.lc044.love/post/13)
 
@@ -162,10 +167,10 @@ npm run dev
 * 觉得UI不够美观
 * 等其他给您造成困扰的地方
 
-请提起[issue](https://github.com/LC044/WeChatMsg/issues)，我将尽快为您解决问题
+请提起[issue](https://github.com/1658671838/WeChatMsg_fix/issues)，我将尽快为您解决问题
 
-如果您是一名开发者，有新的想法或建议，欢迎[fork](https://github.com/LC044/WeChatMsg/forks)
-该项目并发起[PR](https://github.com/LC044/WeChatMsg/pulls)，我将把您的名字写入贡献者名单中
+如果您是一名开发者，有新的想法或建议，欢迎[fork](https://github.com/1658671838/WeChatMsg_fix/forks)
+该项目并发起[PR](https://github.com/1658671838/WeChatMsg_fix/pulls)，我将把您的名字写入贡献者名单中
 
 # License
 
