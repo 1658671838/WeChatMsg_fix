@@ -1,5 +1,6 @@
 # 此项目fork自 [WeChatMsg](https://github.com/LC044/WeChatMsg)，使用gemini新增了2025年度报告，目前暂无gui界面。
 
+
 ## 现已支持微信4.0，[点击查看详细设计文档](https://blog.lc044.love/post/13)
 
 <h1 align="center">我的数据我做主</h1>
@@ -77,6 +78,37 @@
 
 
 ## 源码运行
+
+### 1. 环境准备
+1. 下载并安装 [Python 3.10+](https://www.python.org/downloads/)，安装时请勾选 `Add Python to PATH`。
+2. 下载并安装 **微信 4.0.3.22** 版本。
+3. 下载并安装 [Node.js](https://nodejs.org/) (用于预览网页版报告)。
+
+### 2. 安装依赖
+在项目根目录下打开终端，运行以下命令安装 Python 依赖：
+```bash
+pip install -r requirements.txt
+```
+
+### 3. 生成年度报告数据
+1. 使用文本编辑器打开 `generate_report_data.py` 文件。
+2. 修改 `db_dir` 变量，将其改为您电脑上微信数据库的实际路径（通常位于 `WeChat Files\wxid_xxxx\db_storage`）。
+3. 运行脚本生成数据：
+```bash
+python generate_report_data.py
+```
+
+### 4. 启动报告预览
+1. 进入报告前端目录：
+```bash
+cd AnnualReport/report-2025/single
+```
+2. 安装前端依赖并启动服务：
+```bash
+npm install
+npm run dev
+```
+3. 脚本运行成功后会显示一个本地链接（如 `http://localhost:5173`），复制到浏览器打开即可查看您的2025年度报告。
 
 ## PC端使用过程中部分问题解决（可参考）
 
