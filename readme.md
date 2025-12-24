@@ -38,11 +38,6 @@
   * 更低的内存占用
   * 更快的导出速度
 
-### 全新的Ui
-  * 更简洁
-  * 更流畅
-  * 更友好
-  * 前后端彻底分离
 
 
 ## 🍉功能
@@ -150,4 +145,4 @@
 
 WeChatMsg is licensed under [MIT](./LICENSE).
 
-Copyright © 2022-2024 by SiYuan.
+Copyright © 2022-2025 by SiYuan.
