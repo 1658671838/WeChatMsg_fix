@@ -1,0 +1,38 @@
+# --- Python Standard ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+venv_decrypt/
+venv_main_pc/
+build/
+dist/
+*.spec
+
+# --- IDE ---
+.vscode/
+.idea/
+
+# --- Privacy: Database & Chat Data ---
+wxid_*/
+export_data/
+data/
+app/data/
+app/DataBase/
+
+# --- Privacy: Specific Files ---
+*.db
+*.log
+contacts.txt
+conversation-*.txt
+日志文件-*.log
+wordcloud.html
+
+# --- Report Generation Data ---
+AnnualReport/**/getdata.js
+
+# --- Misc ---
+.DS_Store
+sqlcipher-3.0.1/
+TEST/
