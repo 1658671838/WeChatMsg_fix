@@ -13,6 +13,8 @@ dist/
 # --- IDE ---
 .vscode/
 .idea/
+.claude/
+.claud/
 
 # --- Privacy: Database & Chat Data ---
 wxid_*/

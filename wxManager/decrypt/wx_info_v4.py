@@ -339,7 +339,40 @@ def get_key_inner(pid, process_infos):
     return keys
 
 
+def get_module_base(pid, module_name):
+    try:
+        pm = pymem.Pymem(pid)
+        for module in pm.list_modules():
+            if module.name.lower() == module_name.lower():
+                return module.lpBaseOfDll
+    except:
+        pass
+    return None
+
+
 def get_key(pid, process_handle, buf):
+    # Try offset method for specific version 4.1.6.14
+    try:
+        version = get_version(pid)
+        if version == "4.1.6.14":
+            base = get_module_base(pid, "WeChatWin.dll")
+            if not base:
+                base = get_module_base(pid, "Weixin.dll")
+                
+            if base:
+                offset = 0x90a4b38
+                ptr_loc = base + offset
+                # Read pointer
+                ptr_bytes = read_bytes_from_pid(pid, ptr_loc, 8)
+                if ptr_bytes:
+                    ptr = struct.unpack("<Q", ptr_bytes)[0]
+                    # Read key
+                    key = read_bytes_from_pid(pid, ptr, 32)
+                    if key and len(key) == 32:
+                        return key
+    except Exception as e:
+        print(f"Offset method failed: {e}")
+
     process_infos = get_memory_regions(process_handle)
 
     def split_list(lst, n):

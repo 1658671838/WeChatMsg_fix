@@ -33,7 +33,10 @@ def decrypt_db_file_v4(pkey, in_db_path, out_db_path):
         mac_salt = bytes(x ^ 0x3a for x in salt)
 
         # Convert pkey from hex to bytes
-        passphrase = bytes.fromhex(pkey)
+        if isinstance(pkey, str):
+            passphrase = bytes.fromhex(pkey)
+        else:
+            passphrase = pkey
 
         # Use PBKDF2 to derive key and mac_key
         key = PBKDF2(passphrase, salt, dkLen=KEY_SIZE, count=ROUND_COUNT, hmac_hash_module=SHA512)
