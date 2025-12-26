@@ -16,6 +16,7 @@ sys.path.insert(0, project_root)
 
 from wxManager import DatabaseConnection, MessageType
 from wxManager.model import Me
+from wxManager.parser.link_parser import wx_sport
 
 def generate_report_data():
     print("开始生成个性化年度报告数据...")
@@ -98,6 +99,9 @@ def generate_report_data():
     # Keywords
     text_content = []
     
+    # Step data (微信运动)
+    daily_step_counts = defaultdict(int)  # '2025-01-01' -> steps
+    
     # Date range for 2025
     start_2025 = datetime.datetime(2025, 1, 1).timestamp()
     end_2025 = datetime.datetime(2026, 1, 1).timestamp()
@@ -113,6 +117,30 @@ def generate_report_data():
             
         # STRICT FILTER: Only private chats
         # Exclude chatrooms, official accounts (gh_), filehelper, openim (Enterprise WeChat), and specific IDs
+        # BUT we need to read "微信运动" (gh_43f2581f6fd6) for step data
+        if username == 'gh_43f2581f6fd6':
+            # 微信运动公众号 - 读取步数数据
+            sport_msgs = db.get_messages(username)
+            if sport_msgs:
+                for msg in sport_msgs:
+                    ts = msg.timestamp
+                    if ts <= 0: continue
+                    dt = datetime.datetime.fromtimestamp(ts)
+                    date_str = dt.strftime('%Y-%m-%d')
+                    if start_2025 <= ts < end_2025:
+                        if msg.type == MessageType.LinkMessage and hasattr(msg, 'xml_content') and msg.xml_content:
+                            try:
+                                sport_data = wx_sport(msg.xml_content)
+                                if sport_data and sport_data.get('score'):
+                                    score_str = str(sport_data.get('score', '0')).replace(',', '')
+                                    steps = int(score_str) if score_str.isdigit() else 0
+                                    if steps > 0:
+                                        # 取每天最大的步数（可能有多条记录）
+                                        daily_step_counts[date_str] = max(daily_step_counts[date_str], steps)
+                            except:
+                                pass
+            continue
+            
         if username.endswith('@chatroom') or username.startswith('gh_') or username == 'filehelper' or username.endswith('@openim') or username.endswith('@qy_u') or username == 'jQ4jTweaBCAFtdK':
             continue
             
@@ -164,6 +192,7 @@ def generate_report_data():
 
     # 6. Process Data
     print("正在计算统计数据...")
+    print(f"读取到 {len(daily_step_counts)} 天的步数数据，总计 {sum(daily_step_counts.values())} 步")
     
     # Days in 2025 (so far)
     # If today is in 2025, use today. If later, use 365.
@@ -231,11 +260,11 @@ def generate_report_data():
         top_keyword = keywords_list[0][0]
         top_keyword_num = keywords_list[0][1]
 
-    # Heatmap Data (Step Data Replacement)
-    # Format: [['2025-01-01', 10], ...]
+    # Heatmap Data (Step Data) - 真正的微信运动步数
+    # Format: [['2025-01-01', 10000], ...]
     heatmap_data_js = "[\n"
-    for date_str, count in daily_msg_counts.items():
-        heatmap_data_js += f"        ['{date_str}', {count}],\n"
+    for date_str, steps in daily_step_counts.items():
+        heatmap_data_js += f"        ['{date_str}', {steps}],\n"
     heatmap_data_js += "    ]"
 
     # Top Emoji
@@ -336,29 +365,43 @@ def generate_report_data():
     # It might be "getVirtualData('2024')" in the original file
     content = re.sub(r'export var\s+stepData\s+=\s+[^;]+;', f'export var stepData = {heatmap_data_js};', content)
     
-    # Update stepdescription to "Message Activity"
+    # Find max day (步数最高的一天)
+    max_day_str = '2025-01-01'
+    max_day_count = 0
+    if daily_step_counts:
+        max_day_str = max(daily_step_counts, key=daily_step_counts.get)
+        max_day_count = daily_step_counts[max_day_str]
+    
+    max_date = datetime.datetime.strptime(max_day_str, '%Y-%m-%d')
+    
+    # 计算年度总步数和距离
+    total_steps = sum(daily_step_counts.values())
+    distance_km = int(total_steps * 0.0007)  # 大约每步0.7米
+    earth_rounds = round(distance_km / 40075, 2)  # 地球周长约40075公里
+
+    # Update stepdescription - 真实的步数统计
     step_desc_js = """export const stepdescription = {
-    sumUp: '热络的每一天',
+    sumUp: '行万里路',
     left: {
-        totalStepsPrefix: '年度活跃天数',
+        totalStepsPrefix: '年度总步数',
         totalSteps: %d,
-        distancePrefix: '累计互动',
+        distancePrefix: '相当于走了',
         distance: %d,
-        distanceSuffix: '次',
-        earthPrefix: '超过了',
-        earthRounds: 99,
-        earthSuffix: '%%的用户',
+        distanceSuffix: '公里',
+        earthPrefix: '绕了地球',
+        earthRounds: %s,
+        earthSuffix: '圈',
     },
     right: {
-        year: '2025',
-        month: '12',
-        day: '31',
-        stepsPrefix: '单日最高',
+        year: '%s',
+        month: '%02d',
+        day: '%02d',
+        stepsPrefix: '达成',
         steps: %d,
-        stepsSuffix: '条',
-        message: '这一天，你们的对话仿佛没有尽头',
+        stepsSuffix: '步',
+        message: '这一天，走过的是未知的风景，留下的是每一步的精彩',
     },
-};""" % (len(daily_msg_counts), total_sent + total_received, max(daily_msg_counts.values()) if daily_msg_counts else 0)
+};""" % (total_steps, distance_km, str(earth_rounds), str(max_date.year), max_date.month, max_date.day, max_day_count)
     
     content = re.sub(r'export const stepdescription = \{[\s\S]*?\};', step_desc_js, content)
 
