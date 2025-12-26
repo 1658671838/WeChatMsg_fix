@@ -9,6 +9,8 @@ venv_main_pc/
 build/
 dist/
 *.spec
+wx*/
+echo*/
 
 # --- IDE ---
 .vscode/
@@ -38,3 +40,4 @@ AnnualReport/**/getdata.js
 .DS_Store
 sqlcipher-3.0.1/
 TEST/
+*.zip
