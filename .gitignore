@@ -36,3 +36,4 @@ AnnualReport/**/getdata.js
 .DS_Store
 sqlcipher-3.0.1/
 TEST/
+*.zip

@@ -1,5 +1,7 @@
 # 此项目fork自 [WeChatMsg](https://github.com/LC044/WeChatMsg)，使用gemini新增了2025年度报告，目前暂无gui界面。
 
+微信各版本下载（这里可以下载对应的微信任何版本）：https://github.com/cscnk52/wechat-windows-versions
+
 > [!WARNING]
 > **版本注意事项**：
 > * 微信版本过低可能导致无法登录。
